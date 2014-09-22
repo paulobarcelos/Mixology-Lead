@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mytilus Edilus</title>
+		<link rel="stylesheet" href="/station/src/style.css">
+		<meta name="viewport" content="width=640, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<script data-main="/station/src/main.js" src="/station/libs/require.js"></script>
+		<script>
+			require.config({
+				urlArgs: (new Date()).getTime()
+			});
+			require({
+				paths: {
+					happy: "/happy"
+				}
+			});
+			window.onerror = function(message, url, linenumber) {
+				alert("JavaScript error: " + message + " on line " + linenumber + " for " + url);
+			}
+		</script>
+	</body>
+</html>

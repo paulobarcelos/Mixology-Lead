@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			if (navigator.platform.indexOf("iPad") === -1 && 
+				navigator.platform.indexOf("iPhone") === -1 &&
+				navigator.platform.indexOf("iPod") === -1) {
+				window.location = '/teaser-scale/';
+			}		
+		</script>
+		<title>Mytilus Edilis</title>
+		<link rel="stylesheet" href="/teaser/dist/style.css">
+		<meta name="viewport" content="width=640, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />	
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>	
+	</head>
+	<body>
+		<script data-main="/teaser/dist/main.js" src="/teaser/libs/require.js"></script>
+	</body>
+</html>

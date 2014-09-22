@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			if (navigator.platform.indexOf("iPad") === -1 && 
+				navigator.platform.indexOf("iPhone") === -1 &&
+				navigator.platform.indexOf("iPod") === -1) {
+				window.location = '/station-scale/';
+			}		
+		</script>
+		<title>Mytilus Edulis</title>
+		<link rel="stylesheet" href="/station/dist/style.css">
+		<meta name="viewport" content="width=640, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />	
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="/station/dist/jquery.min.js"><\/script>')</script>
+	</head>
+	<body>
+		<script data-main="/station/dist/main.js" src="/station/libs/require.js"></script>
+	</body>
+</html>

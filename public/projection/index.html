@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mytilus Edulis</title>
+		<link rel="stylesheet" href="/projection/src/style.css">
+	</head>
+	<body>
+		<script data-main="/projection/src/main.js" src="/projection/libs/require.js"></script>
+		<script>
+			require.config({
+				urlArgs: (new Date()).getTime()
+			});
+			require({
+				paths: {
+					happy: "/happy"
+				}
+			});
+		</script>
+	</body>
+</html>

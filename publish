@@ -1,0 +1,16 @@
+#!/bin/bash
+SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $SRC_DIR
+
+./public/station/build/build
+
+af update mytilus-edulis
+
+git checkout develop
+git add -A
+git commit -m "./publish script commit"
+git checkout master
+git merge develop
+git checkout develop
+git push origin
+git push heroku master
