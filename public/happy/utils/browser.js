@@ -10,28 +10,28 @@ function(
 	"use strict";
 
 	var navigator = window.navigator || {};
-	navigator.userAgent = navigator.userAgent || '';
-	navigator.vendor = navigator.vendor || '';
-	navigator.appVersion = navigator.appVersion || '';
+	var userAgent = navigator.userAgent || '';
+	var vendor = navigator.vendor || '';
+	var appVersion = navigator.appVersion || '';
 
 	var dataBrowser = [
 		{
-			string: navigator.userAgent,
+			string: userAgent,
 			subString: "Chrome",
 			identity: "Chrome"
 		},
-		{ 	string: navigator.userAgent,
+		{ 	string: userAgent,
 			subString: "CriOS",
 			versionSearch: "CriOS/",
 			identity: "Chrome"
 		},
-		{ 	string: navigator.userAgent,
+		{ 	string: userAgent,
 			subString: "OmniWeb",
 			versionSearch: "OmniWeb/",
 			identity: "OmniWeb"
 		},
 		{
-			string: navigator.vendor,
+			string: vendor,
 			subString: "Apple",
 			identity: "Safari",
 			versionSearch: "Version"
@@ -42,44 +42,44 @@ function(
 			versionSearch: "Version"
 		},
 		{
-			string: navigator.vendor,
+			string: vendor,
 			subString: "iCab",
 			identity: "iCab"
 		},
 		{
-			string: navigator.vendor,
+			string: vendor,
 			subString: "KDE",
 			identity: "Konqueror"
 		},
 		{
-			string: navigator.userAgent,
+			string: userAgent,
 			subString: "Firefox",
 			identity: "Firefox"
 		},
 		{
-			string: navigator.vendor,
+			string: vendor,
 			subString: "Camino",
 			identity: "Camino"
 		},
 		{		// for newer Netscapes (6+)
-			string: navigator.userAgent,
+			string: userAgent,
 			subString: "Netscape",
 			identity: "Netscape"
 		},
 		{
-			string: navigator.userAgent,
+			string: userAgent,
 			subString: "MSIE",
 			identity: "Explorer",
 			versionSearch: "MSIE"
 		},
 		{
-			string: navigator.userAgent,
+			string: userAgent,
 			subString: "Gecko",
 			identity: "Mozilla",
 			versionSearch: "rv"
 		},
 		{ 		// for older Netscapes (4-)
-			string: navigator.userAgent,
+			string: userAgent,
 			subString: "Mozilla",
 			identity: "Netscape",
 			versionSearch: "Mozilla"
@@ -97,7 +97,7 @@ function(
 			identity: "Mac"
 		},
 		{
-			   string: navigator.userAgent,
+			   string: userAgent,
 			   subString: "iPhone",
 			   identity: "iPhone/iPod"
 	    },
@@ -114,7 +114,7 @@ function(
 		if(cachedInfo) return cachedInfo;
 
 		var name = searchString(dataBrowser) || "unknown browser";
-		var version = searchVersion(navigator.userAgent) || searchVersion(navigator.appVersion) || "unknown version";
+		var version = searchVersion(userAgent) || searchVersion(appVersion) || "unknown version";
 		var os = searchString(dataOS) || "unknown OS";
 
 		cachedInfo = {

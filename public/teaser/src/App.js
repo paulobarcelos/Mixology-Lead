@@ -36,13 +36,14 @@ function (
 		ratingSelector,
 		endScreen,
 		commentSelector,
-		host = "http://mixology.eu01.aws.af.cm/";
+		host = (window.location.hostname.indexOf('localhost') > -1) ?  
+			"http://127.0.0.1:8000/" : 'http://mixology-api-lead.herokuapp.com/';
 
 		var setup = function(){	
 			self.setFPS(0);
 
 			var titleNode = document.createElement('h1');
-			titleNode.innerHTML = "Mytilus Edulis";
+			titleNode.innerHTML = "Mx Lead";
 			self.container.appendChild(titleNode);
 
 			loadFlavorsData();
