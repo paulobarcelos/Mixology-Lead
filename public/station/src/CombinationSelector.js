@@ -29,9 +29,9 @@ function (
 
 		namesNode,
 		simpleFlavorsNamesNode,
-		mainFlavorNameNode,
+		//mainFlavorNameNode,
 
-		mainFlavor,
+		//mainFlavor,
 		groups,
 		groupsIds,
 		groupSelectors,
@@ -43,16 +43,18 @@ function (
 		unreadySignal,
 		groupChangedSignal,
 		changedSignal;
-
 		var init = function(){
 			node = document.createElement('div');
 			dom.addClass(node, 'combination-selector');
 
-			mainFlavor = flavors.shift();
+			//mainFlavor = flavors.shift();
 			parseFlavors(flavors);
+			dom.addClass(node, 'num-tabs-'+ groupsIds.length);
 
 			groupSelectorsNode = document.createElement('div');
 			dom.addClass(groupSelectorsNode, 'tabs');
+
+			
 			node.appendChild(groupSelectorsNode);
 
 			flavorsNode = document.createElement('div');
@@ -66,10 +68,10 @@ function (
 			dom.addClass(simpleFlavorsNamesNode, 'simple');
 			namesNode.appendChild(simpleFlavorsNamesNode);
 			
-			mainFlavorNameNode = document.createElement('div');
-			dom.addClass(mainFlavorNameNode, 'main');
-			mainFlavorNameNode.innerHTML = mainFlavor.name;
-			namesNode.appendChild(mainFlavorNameNode);
+			//mainFlavorNameNode = document.createElement('div');
+			//dom.addClass(mainFlavorNameNode, 'main');
+			//mainFlavorNameNode.innerHTML = mainFlavor.name;
+			//namesNode.appendChild(mainFlavorNameNode);
 
 			ready = false;
 			selected = [];
@@ -122,7 +124,7 @@ function (
 				simpleFlavorsNamesNode.appendChild(nameNode);
 			});
 
-			if(selected.length == 2){
+			if(selected.length == 3){
 				if(!ready){
 					ready = true;
 					readySignal.dispatch(self);
@@ -180,7 +182,7 @@ function (
 		}
 		var getSelected = function(){
 			var ids = [];
-			ids.push(mainFlavor._id);
+			//ids.push(mainFlavor._id);
 			for (var i = 0; i < selected.length; i++) {
 				ids.push(selected[i]._id);
 			};

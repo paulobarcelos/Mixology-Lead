@@ -32,7 +32,7 @@ function (
 			var cluster;
 			var count = -1;
 			for (var i = 0; i < flavors.length; i++) {
-				if(i%7 == 0){
+				if(i%9 == 0){
 					count++;
 					cluster = document.createElement('div');
 					dom.addClass(cluster, 'cluster');
@@ -42,12 +42,7 @@ function (
 				flavorSelector.selectedSignal.add(onFlavorSelected);
 				flavorSelector.deselectedSignal.add(onFlavorDeselected);
 				flavorSelectors.push(flavorSelector);
-				if(count == 1 || count ==2){
-					cluster.insertBefore(flavorSelector.node, cluster.firstChild);
-				}
-				else{
-					cluster.appendChild(flavorSelector.node);
-				}
+				cluster.appendChild(flavorSelector.node);
 				
 			};
 
@@ -97,7 +92,7 @@ function (
 				}
 			}*/
 			
-			if(selected.length == 2){
+			if(selected.length == 3){
 				if(!ready){
 					for (var i = flavorSelectors.length - 1; i >= 0; i--) {
 						if(!flavorSelectors[i].selected)

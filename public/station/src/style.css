@@ -59,6 +59,7 @@ h1{
 	height: 520px;
 	margin: 20px auto;
 }
+
 .group {
 	position: relative;
 	width: 500px;
@@ -77,12 +78,18 @@ h1{
 	border: solid 10px #000;
 	background-color: #000;
 }
+.combination-selector.num-tabs-1 .group-container{
+	left: 30px;
+}
 .tabs {
 	position: absolute;
 	top:0;
 	left: 0;
 	width: 60px;
 	height: 100%;
+}
+.combination-selector.num-tabs-1 .tabs{
+	display: none;
 }
 .tab  {
 	width: 100%;
@@ -160,7 +167,7 @@ h1{
 	line-height: 1em;
 	background-color: #fff;
 }
-.names .main{
+/*.names .main{
 	width: 100%;
 	position: absolute;
 	top: 69%;
@@ -169,12 +176,12 @@ h1{
 	font-weight: 700;
 	text-transform: uppercase;
 	margin-bottom: 1.3em;
-}
+}*/
 .names .simple > div {
 	position: absolute;
 	width: 100%;
 }
-.names .simple > div:nth-child(2) {
+.names .simple > div:nth-child(3) {
 	top: -3%;
 	font-family: 'Arbutus Slab', sans-serif;
 	font-weight: normal;
@@ -182,12 +189,20 @@ h1{
 	font-size: 0.99em;
 	line-height: 1.1em;
 }
-.names .simple > div:nth-child(1) {
+.names .simple > div:nth-child(2) {
 	top: 30%;
 	font-family: 'Quicksand', sans-serif;
 	font-weight: normal;
 	text-transform: uppercase;
 	font-size: 0.83em;
+}
+.names .simple > div:nth-child(1) {
+	top: 61%;
+	font-family: 'Karla', sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 1.3em;
 }
 
 .names .simple > div{
@@ -219,7 +234,17 @@ h1{
 	-webkit-animation-duration: 1s;
 	-webkit-animation-name: glow;
 	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-direction: alternate;		
+	-webkit-animation-direction: alternate;	
+
+	-moz-animation-duration: 1s;
+	-moz-animation-name: glow;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-direction: alternate;	
+
+	animation-duration: 1s;
+	animation-name: glow;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;		
 }
 .no-box-shadow .flavor {
 	border: solid 1px #000;
@@ -252,11 +277,11 @@ h1{
 	left:0;
 }
 .cluster:nth-child(2n+1) .flavor{
-	width: 14.2857143%;
+	width: 11.1111111%;
 	height: 100%;
 }
 .cluster:nth-child(2n) .flavor{
-	height: 14.2857143%;
+	height: 11.1111111%;
 	width: 100%;
 }
 .rating{

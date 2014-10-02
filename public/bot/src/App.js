@@ -20,8 +20,8 @@ function (
 		flavors,
 		flavorsIds,
 		combinationPublisher,
-		host = "http://mixology.eu01.aws.af.cm/";
-		//host = "http://127.0.0.1:8000/";
+		host = (window.location.hostname.indexOf('localhost') > -1) ?  
+			"http://127.0.0.1:8000/" : 'http://mixology-api-lead.herokuapp.com/';
 
 		var setup = function(){	
 			self.setFPS(0);

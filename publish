@@ -4,8 +4,6 @@ cd $SRC_DIR
 
 ./public/station/build/build
 
-af update mytilus-edulis
-
 git checkout develop
 git add -A
 git commit -m "./publish script commit"
