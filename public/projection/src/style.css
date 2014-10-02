@@ -134,7 +134,7 @@ body{
 
 .featured-flavors .images{
 	position: absolute;
-	-webkit-transform: scale3d(1.7,1.7,0) translate3d(-170px,83px,0);
+	-webkit-transform: scale3d(1.7,1.7,1) translate3d(-170px,83px,0);
 }
 
 .featured-flavors img{
