@@ -115,10 +115,17 @@ function (
 			dom.empty(imagesNode)
 			dom.empty(namesNode)
 
-			commentNode.innerHTML = combination.comment;
+			commentNode.innerHTML = combination.comment+ ' ';
+			var ratingString = '';
+			for (var i = 0; i < combination.rating; i++) {
+				ratingString += '★';
+			};
+			commentNode.innerHTML += '<span class="rating">'+ratingString+'</span>';
+
 			var fontSize = 10;
-			if(combination.comment.length>15){
-				fontSize = 10 - combination.comment.length / 8;
+			var textLength = combination.comment.length + combination.rating + 1;
+			if(textLength>15){
+				fontSize = 10 - textLength / 8;
 			}
 			commentNode.style.fontSize = fontSize + 'em';
 
@@ -150,10 +157,10 @@ function (
 
 			flavorData.forEach(function(data, index){
 				data.image.style.zIndex = index;
-				data.image.style.left = -data.image.width/2 + 'px';
+				data.image.style.left = -data.image.width/2 + ((index%2) ? -100: 30) +'px';
 				var y = 0;
 				if(index>0) {
-					y = flavorData[index-1].offsetBottom + flavorData[index-1].image.height * 0.7;
+					y = flavorData[index-1].offsetBottom + 150 * 0.7;
 				}
 				data.offsetBottom = y;
 				data.image.style.bottom = data.offsetBottom + 'px';

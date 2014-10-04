@@ -131,6 +131,9 @@ body{
 	height: 210px;
 	line-height: 210px;
  }
+ .featured-flavors .comment .rating{
+ 	font-size: 0.7em;
+ }
 
 .featured-flavors .images{
 	position: absolute;
@@ -140,6 +143,8 @@ body{
 .featured-flavors img{
 	position: absolute;
 	bottom: 0;
+	height: 150px;
+	width: auto;
 }
 
 .featured-flavors .names{
@@ -422,14 +427,12 @@ letter-spacing: 15px;
 
 	margin-right: 0;
 }
-.combination-ranking .item .wrapper:nth-child(1) .image{
-	background-size: 62%;
 
-}
 .combination-ranking .item .image {
 	background-position: 50% 50%;
 	width: 100%;
 	height: 250px;
+	background-size: 30%;
 	background-repeat: no-repeat;
 }
 .combination-ranking .item .name {
