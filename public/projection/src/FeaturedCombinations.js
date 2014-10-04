@@ -120,10 +120,13 @@ function (
 			for (var i = 0; i < combination.rating; i++) {
 				ratingString += '★';
 			};
+			for (var i = 0; i < 5 - combination.rating; i++) {
+				ratingString += '☆'; 
+			};
 			commentNode.innerHTML += '<span class="rating">'+ratingString+'</span>';
 
 			var fontSize = 10;
-			var textLength = combination.comment.length + combination.rating + 1;
+			var textLength = combination.comment.length + 5+ 1;
 			if(textLength>15){
 				fontSize = 10 - textLength / 8;
 			}
