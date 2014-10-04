@@ -33,6 +33,7 @@ function (
 		flavorBars,
 		combinationRankingPositive,
 		combinationRankingNegative,
+		currentScreen,
 		host = (window.location.hostname.indexOf('localhost') > -1) ?  
 			"http://127.0.0.1:8000/" : 'http://mixology-api-lead.herokuapp.com/';
 
@@ -90,6 +91,7 @@ function (
 				
 				featuredCombinations.stopSignal.addOnce(onFeaturedCombinationsStop);
 				featuredCombinations.start();
+				currentScreen = featuredCombinations;
 			}
 		}
 
@@ -104,15 +106,18 @@ function (
 
 		var onFeaturedCombinationsStop = function(){
 			featuredCombinations.stopSignal.remove(onFeaturedCombinationsStop);
+			currentScreen = treeView;
 			treeView.stopSignal.add(onTreeViewStop);
-			treeView.start(0,60);
+			treeView.start(0,5);
 		}
 		var onTreeViewStop = function(){
 			treeView.stopSignal.remove(onTreeViewStop);
+			currentScreen = featuredCombinations;
 			featuredCombinations.stopSignal.add(onFeaturedCombinationsStop);
 			featuredCombinations.start();
 		}
 
+		
 		var onKeyUp = function(e) {	
 			switch(keyCode.codeToChar(e.keyCode)){
 				case 'SPACEBAR':
@@ -122,20 +127,24 @@ function (
 					removeAllSignals();			
 					break;
 				case '1':
-					removeAllSignals();	
-					treeViewTimeline.start();				
+					removeAllSignals();
+					currentScreen.exit(treeViewTimeline.start());
+					currentScreen = treeViewTimeline;
 					break;
 				case '2':
 					removeAllSignals();	
-					treeViewTimeline.exit(flavorBars.start);					
+					currentScreen.exit(flavorBars.start());
+					currentScreen = flavorBars;			
 					break;
 				case '3':
 					removeAllSignals();	
-					flavorBars.exit(combinationRankingPositive.start);			
+					currentScreen.exit(combinationRankingPositive.start());
+					currentScreen = combinationRankingPositive;				
 					break;
 				case '4':
-					removeAllSignals();	
-					combinationRankingPositive.exit(combinationRankingNegative.start);				
+					removeAllSignals();		
+					currentScreen.exit(combinationRankingNegative.start());
+					currentScreen = combinationRankingNegative;				
 					break;
 				case '5':
 					removeAllSignals();	
