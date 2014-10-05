@@ -77,6 +77,7 @@ function (
 
 			stopSignal = new Signal();
 
+			maxCount = 20;
 		}
 
 		var update = function(dt){
@@ -87,11 +88,15 @@ function (
 			console.log('Featured Flavors start')
 			clean();
 			count = 0;
-			maxCount = 20;
+			
 			isActive = true;
 
 			container.appendChild(node);
 			animate();
+		}
+		var exit = function(callback){
+			if(callback) stopSignal.addOnce(callback);
+			stop();
 		}
 		var stop = function(){
 			console.log('Featured Flavors stop')
@@ -251,6 +256,9 @@ function (
 		});
 		Object.defineProperty(self, 'start', {
 			value: start	
+		});
+		Object.defineProperty(self, 'exit', {
+			value: exit	
 		});
 		Object.defineProperty(self, 'stop', {
 			value: stop

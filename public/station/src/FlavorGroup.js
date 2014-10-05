@@ -31,14 +31,21 @@ function (
 			flavorSelectors = [];
 			var cluster;
 			var count = -1;
+			var clusterSize = 9;
 			for (var i = 0; i < flavors.length; i++) {
-				if(i%9 == 0){
+				if(i%clusterSize == 0){
 					count++;
 					cluster = document.createElement('div');
 					dom.addClass(cluster, 'cluster');
 					node.appendChild(cluster);
 				}
-				var flavorSelector = new FlavorSelector(flavors[i]);
+				var index = i;
+				if(count % 4 == 1 || count % 4 == 2){
+					index = (count+count) * clusterSize + clusterSize - i;
+				}
+				console.log(count, i, index)
+
+				var flavorSelector = new FlavorSelector(flavors[index]);
 				flavorSelector.selectedSignal.add(onFlavorSelected);
 				flavorSelector.deselectedSignal.add(onFlavorDeselected);
 				flavorSelectors.push(flavorSelector);

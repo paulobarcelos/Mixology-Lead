@@ -5,6 +5,7 @@ define(
 
 	'DataLoader',
 	'Database',
+	'IddleView',
 	'TreeView',
 	'TreeViewTimeline',
 	'FeaturedCombinations',
@@ -17,6 +18,7 @@ function (
 
 	DataLoader,
 	Database,
+	IddleView,
 	TreeView,
 	TreeViewTimeline,
 	FeaturedCombinations,
@@ -27,6 +29,7 @@ function (
 		var 
 		self = this,
 		database,
+		iddleView,
 		treeView,
 		treeViewTimeline,
 		featuredCombinations,
@@ -42,7 +45,8 @@ function (
 
 			database = new Database();
 
-			treeView = new TreeView(self.container);		
+			treeView = new TreeView(self.container);	
+			iddleView = new IddleView(self.container);	
 			featuredCombinations = new FeaturedCombinations(self.container);
 			flavorBars = new FlavorBars(self.container);
 			combinationRankingPositive = new CombinationRanking(self.container, "awesome", true);
@@ -91,12 +95,15 @@ function (
 				
 				featuredCombinations.stopSignal.addOnce(onFeaturedCombinationsStop);
 				featuredCombinations.start();
+				//featuredCombinations.maxCount = 1;
+				
 				currentScreen = featuredCombinations;
 			}
 		}
 
 		var onResize = function(size){
 			treeView.size = size;
+			iddleView.size = size;
 			treeViewTimeline.size = size;
 			featuredCombinations.size = size;
 			flavorBars.size = size;
@@ -106,16 +113,24 @@ function (
 
 		var onFeaturedCombinationsStop = function(){
 			featuredCombinations.stopSignal.remove(onFeaturedCombinationsStop);
-			currentScreen = treeView;
-			treeView.stopSignal.add(onTreeViewStop);
-			treeView.start(0,5);
+			
+			currentScreen = iddleView;
+			iddleView.stopSignal.add(onIddleViewStop);
+			iddleView.start(15);
 		}
-		var onTreeViewStop = function(){
-			treeView.stopSignal.remove(onTreeViewStop);
+		var onIddleViewStop = function(){
+			iddleView.stopSignal.remove(onIddleViewStop);
+			
 			currentScreen = featuredCombinations;
 			featuredCombinations.stopSignal.add(onFeaturedCombinationsStop);
 			featuredCombinations.start();
 		}
+		/*var onTreeViewStop = function(){
+			treeView.stopSignal.remove(onTreeViewStop);
+			currentScreen = featuredCombinations;
+			featuredCombinations.stopSignal.add(onFeaturedCombinationsStop);
+			featuredCombinations.start();
+		}*/
 
 		
 		var onKeyUp = function(e) {	
@@ -123,45 +138,57 @@ function (
 				case 'SPACEBAR':
 					self.toggleFullscreen();					
 					break;
-				case '0':
-					removeAllSignals();			
-					break;
 				case '1':
+					if(currentScreen == featuredCombinations) break;
 					removeAllSignals();
-					currentScreen.exit(treeViewTimeline.start());
-					currentScreen = treeViewTimeline;
+					
+					featuredCombinations.resetUsedIds();
+					featuredCombinations.stopSignal.addOnce(onFeaturedCombinationsStop);
+					currentScreen.exit(featuredCombinations.start());
+
+					currentScreen = featuredCombinations;
 					break;
 				case '2':
+					if(currentScreen == flavorBars) break;
 					removeAllSignals();	
 					currentScreen.exit(flavorBars.start());
 					currentScreen = flavorBars;			
 					break;
 				case '3':
+					if(currentScreen == combinationRankingPositive) break;
 					removeAllSignals();	
 					currentScreen.exit(combinationRankingPositive.start());
 					currentScreen = combinationRankingPositive;				
 					break;
 				case '4':
+					if(currentScreen == combinationRankingNegative) break;
 					removeAllSignals();		
 					currentScreen.exit(combinationRankingNegative.start());
 					currentScreen = combinationRankingNegative;				
 					break;
 				case '5':
+					if(currentScreen == treeViewTimeline) break;
+					removeAllSignals();
+					currentScreen.exit(treeViewTimeline.start());
+					currentScreen = treeViewTimeline;
+					break;
+				/*case '5':
 					removeAllSignals();	
 					combinationRankingNegative.exit();			
-					break;
-				case '9':
+					break;*/
+				/*case '9':
 					removeAllSignals();	
 					featuredCombinations.resetUsedIds();
 
 					featuredCombinations.stopSignal.addOnce(onFeaturedCombinationsStop);
 					featuredCombinations.start();
 					featuredCombinations.maxCount = 99999;		
-					break;
+					break;*/
 			}
 		}
 
 		var removeAllSignals = function(){
+			iddleView.stopSignal.removeAll();
 			treeView.stopSignal.removeAll();
 			featuredCombinations.stopSignal.removeAll();
 			flavorBars.stopSignal.removeAll();
