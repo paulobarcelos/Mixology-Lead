@@ -109,7 +109,7 @@ function (
 
 
 			dom.addClass(node, 'show');
-			animationShowTimer = setTimeout(onAnimationShowEnd, 1500);
+			animationShowTimer = setTimeout(onAnimationShowEnd, 300);
 		}
 
 
@@ -118,7 +118,8 @@ function (
 			dom.removeClass(node, 'show');
 		}
 		var exitAnimation = function(){
-			animationHideTimer = setTimeout(onAnimationHideEnd, 1500);
+			console.log('bars exite')
+			animationHideTimer = setTimeout(onAnimationHideEnd, 300);
 			dom.addClass(node, 'hide');
 			dom.removeClass(node, 'during');
 		}

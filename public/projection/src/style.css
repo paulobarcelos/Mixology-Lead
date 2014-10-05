@@ -308,22 +308,22 @@ body{
 	opacity: 1;
 }
 .flavor-bars.show .name{
-	-webkit-animation-duration: 1.5s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: ease-out;
 	-webkit-animation-name: flavor-bars-show-name;
 }
 .flavor-bars.show .bar{
-	-webkit-animation-duration: 1.5s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: ease-out;
 	-webkit-animation-name: flavor-bars-show-bar;
 }
 .flavor-bars.hide .name{
-	-webkit-animation-duration: 1.5s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: ease-in;
 	-webkit-animation-name: flavor-bars-hide-name;
 }
 .flavor-bars.hide .bar{
-	-webkit-animation-duration: 1.5s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: ease-in;
 	-webkit-animation-name: flavor-bars-hide-bar;
 }
@@ -378,12 +378,12 @@ body{
 
 /* Combination ranking --------------------------------------------------------------------------------------*/
 .combination-ranking.show{
-	-webkit-animation-duration: 1.5s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: ease-out;
 	-webkit-animation-name: flavor-bars-show-name;
 }
 .combination-ranking.hide{
-	-webkit-animation-duration: 1.5s;
+	-webkit-animation-duration: 0.3s;
 	-webkit-animation-timing-function: ease-in;
 	-webkit-animation-name: flavor-bars-hide-name;
 }
@@ -451,4 +451,19 @@ letter-spacing: 15px;
 	100% {
 		opacity: 0;
 	}
+}
+
+/* Iddle view -----------------------------------------------------------------*/
+.iddle-view{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background: url(../data/iddle.png) no-repeat center center fixed; 
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
 }
